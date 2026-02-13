@@ -6,12 +6,18 @@ Fetch and analyze issues, stack traces, and error context directly from your Gli
 
 ## Installation
 
-```bash
-# Add the plugin marketplace
-claude plugin marketplace add Udaberrico/udaberrico-claude-marketplace
+```
+/plugin marketplace add Udaberrico/udaberrico-claude-marketplace
+/plugin install glitchtip@udaberrico-claude-marketplace
+```
 
-# Install the GlitchTip plugin
-claude plugin install glitchtip@udaberrico-claude-marketplace
+Other useful commands:
+
+```
+/plugin list
+/plugin update glitchtip
+/plugin uninstall glitchtip
+/plugin marketplace update
 ```
 
 ## Setup
@@ -42,14 +48,28 @@ export GLITCHTIP_BASE_URL="https://your-glitchtip-instance.com"
 
 | Tool | Description |
 |---|---|
-| `glitchtip_issues` | Fetch all issues (defaults to unresolved) |
-| `glitchtip_latest_event` | Get the latest event for a specific issue with full error context (stack traces, breadcrumbs, user data) |
+| `glitchtip_list_projects` | List all projects in the organization |
+| `glitchtip_list_issues` | List issues, optionally filtered by project and search query (unresolved by default) |
+| `glitchtip_get_event` | Get the latest event for a specific issue with full stack trace and error context |
+| `glitchtip_resolve_issue` | Mark an issue as resolved |
+| `glitchtip_ignore_issue` | Mark an issue as ignored |
 
-## Usage examples
+## Usage
+
+Use the `/glitchtip` slash command in Claude Code to start a guided error triage workflow. It will:
+
+1. Detect your project automatically (or ask you to pick one)
+2. Fetch and summarize all unresolved issues
+3. Walk you through investigating each issue with full stack traces
+4. Search your codebase for the relevant code and suggest fixes
+5. Offer to resolve or ignore issues once addressed
+
+You can also ask Claude directly:
 
 - "Show me all unresolved GlitchTip errors"
 - "What's the latest error in GlitchTip?"
 - "Get the stack trace for GlitchTip issue 42"
+- "Check if there are any production errors"
 
 ## License
 
